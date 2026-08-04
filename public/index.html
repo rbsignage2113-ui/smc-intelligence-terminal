@@ -1,39 +1,208 @@
-<!-- Dashboard Main Wrapper -->
-<div class="dashboard-main-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; padding: 20px;">
-    
-    <!-- Left Column: Chart & Journal -->
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Ungaloda Chart Card inga irukkum -->
-        <div class="card" style="background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 16px; color: white;">
-            <h3 style="font-size: 15px; margin-bottom: 10px;">Gold / XAUUSD Live Chart</h3>
-            <!-- Chart view elements -->
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Intelligence Terminal</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #0b0f19; color: #f3f4f6; display: flex; height: 100vh; overflow: hidden; }
+        
+        /* Sidebar */
+        .sidebar { width: 240px; background: #0f172a; border-right: 1px solid #1e293b; display: flex; flex-direction: column; padding: 20px; }
+        .logo { font-size: 16px; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+        .menu-item { padding: 10px 12px; border-radius: 8px; color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+        .menu-item.active, .menu-item:hover { background: #1e293b; color: #38bdf8; }
+
+        /* Main Content */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; padding: 20px; gap: 20px; }
+        
+        /* Top Bar */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 12px; border: 1px solid #1e293b; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .metric-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 5px; }
+        .metric-title { font-size: 12px; color: #94a3b8; }
+        .metric-value { font-size: 20px; font-weight: bold; color: #fff; }
+
+        /* Sections Grid */
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; }
+        .card-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
+
+        /* Tables & Lists */
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
+        th { color: #64748b; font-weight: 500; }
+        
+        /* Bottom Widgets Row */
+        .bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">⚡ SMC INTELLIGENCE</div>
+        <a href="#" class="menu-item active">📊 Dashboard</a>
+        <a href="#" class="menu-item">📁 Accounts</a>
+        <a href="#" class="menu-item">📈 Market Intelligence</a>
+        <a href="#" class="menu-item">🤖 AI Opportunities</a>
+        <a href="#" class="menu-item">💎 CRT Intelligence <span style="background: #0284c7; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">NEW</span></a>
+        <a href="#" class="menu-item">📓 Trading Journal</a>
+        <a href="#" class="menu-item">📉 Trade Analytics</a>
+        <a href="#" class="menu-item">🛡️ Risk Manager</a>
+        <a href="#" class="menu-item">📅 Calendar</a>
+        <a href="#" class="menu-item">📰 News & Events</a>
+        <a href="#" class="menu-item">🧠 Psychology Journal</a>
+        <a href="#" class="menu-item">⚙️ Settings</a>
     </div>
 
-    <!-- Right Column: Inside Dashboard News Card -->
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-        <div class="card" style="background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 16px; color: white;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <h3 style="font-size: 15px; margin: 0; color: #f3f4f6; display: flex; align-items: center; gap: 8px;">
-                    📰 Market Wire & Macro News
-                </h3>
-                <span style="font-size: 11px; background: #1f2937; color: #10b981; padding: 2px 8px; border-radius: 4px; font-weight: bold;">LIVE FEED</span>
+    <!-- Main Dashboard Area -->
+    <div class="main-content">
+        
+        <!-- Header Info -->
+        <div class="top-bar">
+            <div>
+                <h2 style="font-size: 18px; color: #fff;">Good Morning, Trader! 👋</h2>
+                <p style="font-size: 12px; color: #94a3b8;">Focus. Plan. Execute. Review. Repeat.</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-                <div style="padding: 10px; background: #1f2937; border-radius: 8px; font-size: 13px; border-left: 3px solid #ef4444;">
-                    <strong style="color: #f87171;">[Bloomberg]</strong> US Dollar Index tests key liquidity pool; traders eye upcoming FOMC rate decisions.
-                    <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">5 mins ago</div>
+            <div style="display: flex; gap: 20px; font-size: 13px; color: #94a3b8;">
+                <span>Thursday, 22 May 2025 | 07:30:45 AM</span>
+                <span style="background: #1e293b; padding: 4px 10px; border-radius: 6px; color: #38bdf8;">🟢 London Session</span>
+            </div>
+        </div>
+
+        <!-- Top Metrics Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-title">TOTAL ACCOUNTS</span>
+                <span class="metric-value">4 <span style="font-size: 12px; color: #64748b; font-weight: normal;">Active Accounts</span></span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">TOTAL BALANCE</span>
+                <span class="metric-value" style="color: #38bdf8;">$439,850</span>
+                <span style="font-size: 11px; color: #64748b;">Across All Accounts</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">TOTAL P/L (TODAY)</span>
+                <span class="metric-value" style="color: #22c55e;">+$1,236.45</span>
+                <span style="font-size: 11px; color: #22c55e;">+0.28%</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">DAILY LOSS REMAINING</span>
+                <span class="metric-value" style="color: #ef4444;">$2,764.55</span>
+                <span style="font-size: 11px; color: #64748b;">5% Daily Limit</span>
+            </div>
+        </div>
+
+        <!-- Middle Content Grid (CRT & Journal) -->
+        <div class="content-grid">
+            
+            <!-- CRT Intelligence Scanner -->
+            <div class="card">
+                <div class="card-title">
+                    <span>⚡ CRT INTELLIGENCE</span>
+                    <span style="font-size: 12px; color: #38bdf8; cursor: pointer;">View All</span>
                 </div>
-                <div style="padding: 10px; background: #1f2937; border-radius: 8px; font-size: 13px; border-left: 3px solid #3b82f6;">
-                    <strong style="color: #60a5fa;">[Trump & Policy]</strong> Recent trade and fiscal policy remarks drive volatility across major commodity and forex sectors.
-                    <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">15 mins ago</div>
+                <div style="display: flex; justify-content: space-around; text-align: center; margin-bottom: 20px;">
+                    <div>
+                        <div style="font-size: 28px; font-weight: bold; color: #22c55e;">81%</div>
+                        <div style="font-size: 12px; color: #94a3b8;">XAU/USD (Gold)</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: bold; color: #22c55e;">89%</div>
+                        <div style="font-size: 12px; color: #94a3b8;">BTC/USD</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: bold; color: #eab308;">32%</div>
+                        <div style="font-size: 12px; color: #94a3b8;">USD/JPY</div>
+                    </div>
                 </div>
-                <div style="padding: 10px; background: #1f2937; border-radius: 8px; font-size: 13px; border-left: 3px solid #10b981;">
-                    <strong style="color: #34d399;">[Gold Analysis]</strong> XAU/USD holding major institutional order block zones ahead of the New York session.
-                    <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">30 mins ago</div>
+                <div style="background: #0b0f19; padding: 15px; border-radius: 8px; border: 1px solid #1e293b;">
+                    <div style="font-size: 13px; font-weight: bold; margin-bottom: 10px; color: #38bdf8;">CRT Setup Breakdown (XAU/USD - Monthly)</div>
+                    <table>
+                        <tr><th>Step</th><th>Description</th><th>Status</th></tr>
+                        <tr><td>1</td><td>Monthly Bias</td><td><span style="color: #22c55e;">Bullish</span></td></tr>
+                        <tr><td>2</td><td>Daily Liquidity Sweep</td><td><span style="color: #22c55e;">Completed</span></td></tr>
+                        <tr><td>3</td><td>BOS + CHOCH</td><td><span style="color: #22c55e;">Completed</span></td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Trading Journal & Live Log -->
+            <div class="card">
+                <div class="card-title">
+                    <span>📓 TRADING JOURNAL</span>
+                    <span style="font-size: 12px; color: #22c55e;">🟢 MTS Connected</span>
+                </div>
+                <div style="display: flex; gap: 20px; margin-bottom: 15px; font-size: 13px;">
+                    <div>Total Trades: <b>47</b></div>
+                    <div>Win Rate: <b style="color: #22c55e;">63.83%</b></div>
+                    <div>Total P/L: <b style="color: #22c55e;">+$7,842.30</b></div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Date / Time</th>
+                        <th>Symbol</th>
+                        <th>Type</th>
+                        <th>Lots</th>
+                        <th>P/L (USD)</th>
+                    </tr>
+                    <tr>
+                        <td>22 May 07:30</td>
+                        <td>XAUUSD</td>
+                        <td><span style="color: #22c55e;">Buy</span></td>
+                        <td>1.50</td>
+                        <td style="color: #22c55e;">+$1,236.00</td>
+                    </tr>
+                    <tr>
+                        <td>21 May 16:45</td>
+                        <td>BTCUSD</td>
+                        <td><span style="color: #22c55e;">Buy</span></td>
+                        <td>0.20</td>
+                        <td style="color: #22c55e;">+$342.20</td>
+                    </tr>
+                    <tr>
+                        <td>20 May 11:20</td>
+                        <td>XAUUSD</td>
+                        <td><span style="color: #22c55e;">Buy</span></td>
+                        <td>1.50</td>
+                        <td style="color: #22c55e;">+$2,498.00</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- Bottom Widgets Row -->
+        <div class="bottom-grid">
+            <div class="card">
+                <div class="card-title">🛡️ RISK MANAGER</div>
+                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
+                    <div>Account Drawdown: <b style="color: #22c55e;">8.42%</b></div>
+                    <div>Daily Loss Remaining: <b style="color: #ef4444;">$2,764.55</b></div>
+                    <div>Risk Status: <span style="background: #064e3b; color: #34d399; padding: 2px 8px; border-radius: 4px; font-weight: bold;">Safe</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">🤖 AI TRADE QUALITY CHECK</div>
+                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
+                    <div>Spread Check: <span style="color: #22c55e;">✓ OK</span></div>
+                    <div>News Check: <span style="color: #38bdf8;">Clear</span></div>
+                    <div>Volatility: <span style="color: #22c55e;">Normal</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">🧠 PSYCHOLOGY TRACKER</div>
+                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
+                    <div>Today's Mental State: <b style="color: #38bdf8;">Focused</b></div>
+                    <div>Trading Discipline: <b style="color: #22c55e;">Good</b></div>
+                    <div>AI Score: <b style="color: #22c55e;">8.5 / 10</b></div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
+</body>
+</html>
