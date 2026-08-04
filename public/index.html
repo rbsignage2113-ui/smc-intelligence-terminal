@@ -24,16 +24,10 @@
         .metric-title { font-size: 12px; color: #94a3b8; }
         .metric-value { font-size: 20px; font-weight: bold; color: #fff; }
 
-        /* Sections Grid */
-        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        /* Single Wide Card Layout */
         .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
         .card-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
 
-        /* Tables */
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
-        th { color: #64748b; font-weight: 500; }
-        
         /* Bottom Widgets Row */
         .bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     </style>
@@ -95,31 +89,16 @@
             </div>
         </div>
 
-        <!-- Middle Content Grid: Gold (XAUUSD) & EURUSD Live Market Charts -->
-        <div class="content-grid">
-            
-            <!-- GOLD (XAUUSD) LIVE MARKET CHART WIDGET -->
-            <div class="card">
-                <div class="card-title">
-                    <span>🟡 XAU/USD (GOLD) LIVE MARKET CHART</span>
-                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
-                </div>
-                <div style="height: 320px; width: 100%;" class="tradingview-widget-container">
-                    <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22320%22%2C%22symbol%22%3A%22OANDA%3AXAUUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
-                </div>
+        <!-- SINGLE GOLD (XAU/USD) LIVE CHART WIDGET (Editable Title) -->
+        <div class="card">
+            <div class="card-title">
+                <!-- Inga ungalukku thevayana per-a (Name) change pannikalam nanba -->
+                <span id="chart-title-text">🟡 XAU/USD (GOLD) INSTITUTIONAL MENTOR CHART</span>
+                <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
             </div>
-
-            <!-- EUR/USD LIVE MARKET CHART WIDGET -->
-            <div class="card">
-                <div class="card-title">
-                    <span>💶 EUR/USD LIVE MARKET CHART</span>
-                    <span style="font-size: 11px; color: #38bdf8; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
-                </div>
-                <div style="height: 320px; width: 100%;" class="tradingview-widget-container">
-                    <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22320%22%2C%22symbol%22%3A%22FX%3AEURUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
-                </div>
+            <div style="height: 400px; width: 100%;" class="tradingview-widget-container">
+                <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22400%22%2C%22symbol%22%3A%22OANDA%3AXAUUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
-
         </div>
 
         <!-- Bottom Widgets Row -->
