@@ -56,25 +56,50 @@
         <div class="top-bar">
             <div>
                 <h2 style="font-size: 16px; color: #fff;">Good Morning, Trader! 👋</h2>
-                <p style="font-size: 11px; color: #94a3b8;">Live Terminal & Multi-Asset Watchlist</p>
+                <p style="font-size: 11px; color: #94a3b8;">Live Terminal & Watchlist Panel</p>
             </div>
             <div style="display: flex; gap: 15px; font-size: 12px; color: #94a3b8;">
                 <span style="background: #1e293b; padding: 3px 8px; border-radius: 5px; color: #38bdf8;">🟢 Live Session Active</span>
             </div>
         </div>
 
-        <!-- Section 1: Multi-Symbol Watchlist Chart & Market Overview -->
+        <!-- Section 1: Chart with Watchlist Panel Enabled inside Dashboard -->
         <div class="grid-2col">
             
-            <!-- TRADINGVIEW ADVANCED CHART WITH BUILT-IN WATCHLIST -->
+            <!-- ADVANCED CHART WITH WATCHLIST ENABLED -->
             <div class="card">
                 <div class="card-header">
-                    <span>📈 LIVE MARKET CHART & WATCHLIST (Gold, BTC, EUR, JPY, GBP)</span>
-                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● INTERNAL FEED</span>
+                    <span>📈 LIVE CHART (Use Watchlist icon inside chart to switch assets)</span>
+                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● EMBEDDED FEED</span>
                 </div>
-                <!-- TradingView Advanced Chart Widget with Watchlist Enabled -->
-                <div style="height: 420px; width: 100%;" class="tradingview-widget-container">
-                    <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22420%22%2C%22symbol%22%3A%22OANDA%3AXAUUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22watchlist%22%3A%5B%22OANDA%3AXAUUSD%22%2C%22BINANCE%3ABTCUSDT%22%2C%22FX%3AEURUSD%22%2C%22FX%3AUSDJPY%22%2C%22FX%3AGBPUSD%22%5D%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Afalse%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
+                <!-- TradingView Widget with Watchlist and Details panel turned ON -->
+                <div class="tradingview-widget-container" style="height: 420px; width: 100%;">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                      "width": "100%",
+                      "height": "420",
+                      "symbol": "OANDA:XAUUSD",
+                      "interval": "15",
+                      "timezone": "Etc/UTC",
+                      "theme": "dark",
+                      "style": "1",
+                      "locale": "en",
+                      "enable_publishing": false,
+                      "withdateranges": true,
+                      "hide_side_toolbar": false,
+                      "details": true,
+                      "watchlist": [
+                        "OANDA:XAUUSD",
+                        "BINANCE:BTCUSDT",
+                        "FX:EURUSD",
+                        "FX:USDJPY",
+                        "FX:GBPUSD"
+                      ],
+                      "studies": [],
+                      "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
                 </div>
             </div>
 
