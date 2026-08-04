@@ -26,7 +26,7 @@
 
         /* Sections Grid */
         .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
         .card-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
 
         /* Tables */
@@ -34,16 +34,6 @@
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
         th { color: #64748b; font-weight: 500; }
         
-        /* Market Chat Box Styling */
-        .chat-container { display: flex; flex-direction: column; height: 300px; background: #0b0f19; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; }
-        .chat-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-        .chat-bubble { padding: 8px 12px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
-        .chat-bubble.ai { background: #1e293b; color: #38bdf8; align-self: flex-start; }
-        .chat-bubble.user { background: #0284c7; color: #fff; align-self: flex-end; }
-        .chat-input-area { display: flex; border-top: 1px solid #1e293b; background: #0f172a; padding: 8px; gap: 8px; }
-        .chat-input { flex: 1; background: #0b0f19; border: 1px solid #1e293b; border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 13px; outline: none; }
-        .chat-send-btn { background: #38bdf8; color: #0f172a; border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-
         /* Bottom Widgets Row */
         .bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     </style>
@@ -105,54 +95,28 @@
             </div>
         </div>
 
-        <!-- Middle Content Grid: CRT Scanner & Market Intelligence Chat -->
+        <!-- Middle Content Grid: Gold (XAUUSD) & EURUSD Live Market Charts -->
         <div class="content-grid">
             
-            <!-- CRT Intelligence Scanner -->
+            <!-- GOLD (XAUUSD) LIVE MARKET CHART WIDGET -->
             <div class="card">
                 <div class="card-title">
-                    <span>⚡ CRT INTELLIGENCE</span>
-                    <span style="font-size: 12px; color: #38bdf8; cursor: pointer;">View All</span>
+                    <span>🟡 XAU/USD (GOLD) LIVE MARKET CHART</span>
+                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
                 </div>
-                <div style="display: flex; justify-content: space-around; text-align: center; margin-bottom: 20px;">
-                    <div>
-                        <div style="font-size: 28px; font-weight: bold; color: #22c55e;">81%</div>
-                        <div style="font-size: 12px; color: #94a3b8;">XAU/USD (Gold)</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 28px; font-weight: bold; color: #22c55e;">89%</div>
-                        <div style="font-size: 12px; color: #94a3b8;">BTC/USD</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 28px; font-weight: bold; color: #eab308;">32%</div>
-                        <div style="font-size: 12px; color: #94a3b8;">USD/JPY</div>
-                    </div>
-                </div>
-                <div style="background: #0b0f19; padding: 15px; border-radius: 8px; border: 1px solid #1e293b;">
-                    <div style="font-size: 13px; font-weight: bold; margin-bottom: 10px; color: #38bdf8;">CRT Setup Breakdown (XAU/USD - Monthly)</div>
-                    <table>
-                        <tr><th>Step</th><th>Description</th><th>Status</th></tr>
-                        <tr><td>1</td><td>Monthly Bias</td><td><span style="color: #22c55e;">Bullish</span></td></tr>
-                        <tr><td>2</td><td>Daily Liquidity Sweep</td><td><span style="color: #22c55e;">Completed</span></td></tr>
-                        <tr><td>3</td><td>BOS + CHOCH</td><td><span style="color: #22c55e;">Completed</span></td></tr>
-                    </table>
+                <div style="height: 320px; width: 100%;" class="tradingview-widget-container">
+                    <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22320%22%2C%22symbol%22%3A%22OANDA%3AXAUUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
             </div>
 
-            <!-- LIVE MARKET INTELLIGENCE CHAT -->
+            <!-- EUR/USD LIVE MARKET CHART WIDGET -->
             <div class="card">
                 <div class="card-title">
-                    <span>💬 LIVE MARKET CHAT & WIRE</span>
-                    <span style="font-size: 11px; color: #ef4444; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● BLOOMBERG / TRUMP FEED</span>
+                    <span>💶 EUR/USD LIVE MARKET CHART</span>
+                    <span style="font-size: 11px; color: #38bdf8; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
                 </div>
-                <div class="chat-container">
-                    <div class="chat-messages" id="market-chat-messages">
-                        <div class="chat-bubble ai">Vanakkam Nanba! Bloomberg & Global Macro updates live-ah irukku. XAU/USD pathiyo illati Trump trade policies pathiyo enna theriyanum?</div>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="text" id="market-chat-input" class="chat-input" placeholder="Ask market news, XAU/USD levels..." />
-                        <button class="chat-send-btn" onclick="sendMarketMessage()">Ask</button>
-                    </div>
+                <div style="height: 320px; width: 100%;" class="tradingview-widget-container">
+                    <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22320%22%2C%22symbol%22%3A%22FX%3AEURUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
             </div>
 
@@ -160,7 +124,7 @@
 
         <!-- Bottom Widgets Row -->
         <div class="bottom-grid">
-            <div class="card">
+            <div class="card" style="display: block;">
                 <div class="card-title">🛡️ RISK MANAGER</div>
                 <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
                     <div>Account Drawdown: <b style="color: #22c55e;">8.42%</b></div>
@@ -168,7 +132,7 @@
                     <div>Risk Status: <span style="background: #064e3b; color: #34d399; padding: 2px 8px; border-radius: 4px; font-weight: bold;">Safe</span></div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" style="display: block;">
                 <div class="card-title">🤖 AI TRADE QUALITY CHECK</div>
                 <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
                     <div>Spread Check: <span style="color: #22c55e;">✓ OK</span></div>
@@ -176,7 +140,7 @@
                     <div>Volatility: <span style="color: #22c55e;">Normal</span></div>
                 </div>
             </div>
-            <div class="card">
+            <div class="card" style="display: block;">
                 <div class="card-title">🧠 PSYCHOLOGY TRACKER</div>
                 <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
                     <div>Today's Mental State: <b style="color: #38bdf8;">Focused</b></div>
@@ -188,30 +152,5 @@
 
     </div>
 
-    <script>
-        function sendMarketMessage() {
-            const inputField = document.getElementById('market-chat-input');
-            const messagesContainer = document.getElementById('market-chat-messages');
-            const text = inputField.value.trim();
-            if(!text) return;
-
-            // User Chat Bubble
-            const userBubble = document.createElement('div');
-            userBubble.className = 'chat-bubble user';
-            userBubble.textContent = text;
-            messagesContainer.appendChild(userBubble);
-            inputField.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            // Smart Market AI Response Simulation
-            setTimeout(() => {
-                const aiBubble = document.createElement('div');
-                aiBubble.className = 'chat-bubble ai';
-                aiBubble.textContent = "Got it nanba! Bloomberg & Global wire updates-oda match panni intha setup-ku relevant ana market impact-a check panren.";
-                messagesContainer.appendChild(aiBubble);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 700);
-        }
-    </script>
 </body>
 </html>
