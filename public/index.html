@@ -25,7 +25,7 @@
         .metric-value { font-size: 20px; font-weight: bold; color: #fff; }
 
         /* Sections Grid */
-        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; }
         .card-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
 
@@ -34,8 +34,8 @@
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
         th { color: #64748b; font-weight: 500; }
         
-        /* AI Chat Box Styling */
-        .chat-container { display: flex; flex-direction: column; height: 320px; background: #0b0f19; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; }
+        /* Market Chat Box Styling */
+        .chat-container { display: flex; flex-direction: column; height: 300px; background: #0b0f19; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; }
         .chat-messages { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
         .chat-bubble { padding: 8px 12px; border-radius: 8px; max-width: 85%; line-height: 1.4; }
         .chat-bubble.ai { background: #1e293b; color: #38bdf8; align-self: flex-start; }
@@ -105,7 +105,7 @@
             </div>
         </div>
 
-        <!-- Middle Content Grid: CRT Scanner & Live AI Chat Panel -->
+        <!-- Middle Content Grid: CRT Scanner & Market Intelligence Chat -->
         <div class="content-grid">
             
             <!-- CRT Intelligence Scanner -->
@@ -139,19 +139,19 @@
                 </div>
             </div>
 
-            <!-- LIVE AI CHAT ASSISTANT CARD -->
+            <!-- LIVE MARKET INTELLIGENCE CHAT -->
             <div class="card">
                 <div class="card-title">
-                    <span>🤖 LIVE SMC AI ASSISTANT</span>
-                    <span style="font-size: 11px; color: #22c55e;">● ONLINE</span>
+                    <span>💬 LIVE MARKET CHAT & WIRE</span>
+                    <span style="font-size: 11px; color: #ef4444; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● BLOOMBERG / TRUMP FEED</span>
                 </div>
                 <div class="chat-container">
-                    <div class="chat-messages" id="chat-messages">
-                        <div class="chat-bubble ai">Vanakkam Nanba! XAU/USD market structure & entry points-la enna doubt irukku kelunga! 🔥</div>
+                    <div class="chat-messages" id="market-chat-messages">
+                        <div class="chat-bubble ai">Vanakkam Nanba! Bloomberg & Global Macro updates live-ah irukku. XAU/USD pathiyo illati Trump trade policies pathiyo enna theriyanum?</div>
                     </div>
                     <div class="chat-input-area">
-                        <input type="text" id="chat-input-field" class="chat-input" placeholder="Ask about XAU/USD, Setup, Risk..." />
-                        <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+                        <input type="text" id="market-chat-input" class="chat-input" placeholder="Ask market news, XAU/USD levels..." />
+                        <button class="chat-send-btn" onclick="sendMarketMessage()">Ask</button>
                     </div>
                 </div>
             </div>
@@ -189,13 +189,13 @@
     </div>
 
     <script>
-        function sendMessage() {
-            const inputField = document.getElementById('chat-input-field');
-            const messagesContainer = document.getElementById('chat-messages');
+        function sendMarketMessage() {
+            const inputField = document.getElementById('market-chat-input');
+            const messagesContainer = document.getElementById('market-chat-messages');
             const text = inputField.value.trim();
             if(!text) return;
 
-            // User Message
+            // User Chat Bubble
             const userBubble = document.createElement('div');
             userBubble.className = 'chat-bubble user';
             userBubble.textContent = text;
@@ -203,14 +203,14 @@
             inputField.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-            // AI Reply Mock
+            // Smart Market AI Response Simulation
             setTimeout(() => {
                 const aiBubble = document.createElement('div');
                 aiBubble.className = 'chat-bubble ai';
-                aiBubble.textContent = "Noted nanba! XAU/USD order block matrum liquidity zones-oda analysis-a update panren.";
+                aiBubble.textContent = "Got it nanba! Bloomberg & Global wire updates-oda match panni intha setup-ku relevant ana market impact-a check panren.";
                 messagesContainer.appendChild(aiBubble);
                 messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }, 600);
+            }, 700);
         }
     </script>
 </body>
