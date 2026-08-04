@@ -9,27 +9,35 @@
         body { background-color: #0b0f19; color: #f3f4f6; display: flex; height: 100vh; overflow: hidden; }
         
         /* Sidebar */
-        .sidebar { width: 240px; background: #0f172a; border-right: 1px solid #1e293b; display: flex; flex-direction: column; padding: 20px; flex-shrink: 0; }
-        .logo { font-size: 16px; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
-        .menu-item { padding: 10px 12px; border-radius: 8px; color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+        .sidebar { width: 220px; background: #0f172a; border-right: 1px solid #1e293b; display: flex; flex-direction: column; padding: 15px; flex-shrink: 0; overflow-y: auto; }
+        .logo { font-size: 15px; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px; margin-bottom: 25px; }
+        .menu-item { padding: 8px 10px; border-radius: 6px; color: #94a3b8; text-decoration: none; font-size: 13px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
         .menu-item.active, .menu-item:hover { background: #1e293b; color: #38bdf8; }
 
         /* Main Content */
-        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; padding: 20px; gap: 20px; }
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; padding: 15px; gap: 15px; }
         
         /* Top Bar */
-        .top-bar { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 15px 20px; border-radius: 12px; border: 1px solid #1e293b; }
-        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .metric-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 5px; }
-        .metric-title { font-size: 12px; color: #94a3b8; }
-        .metric-value { font-size: 20px; font-weight: bold; color: #fff; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; background: #0f172a; padding: 12px 20px; border-radius: 10px; border: 1px solid #1e293b; }
+        
+        /* Top Metrics Cards */
+        .metrics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .metric-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+        .metric-title { font-size: 11px; color: #94a3b8; font-weight: bold; }
+        .metric-value { font-size: 18px; font-weight: bold; color: #fff; }
 
-        /* Single Wide Card Layout */
-        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; }
-        .card-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
+        /* Middle Grid (Accounts & News/Market) */
+        .grid-2col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 15px; }
+        .grid-2col-even { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .grid-3col { display: grid; grid-template-columns: 1.2fr 1.2fr 1fr; gap: 15px; }
 
-        /* Bottom Widgets Row */
-        .bottom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 15px; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; font-weight: bold; color: #f8fafc; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
+        th { color: #64748b; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -41,7 +49,7 @@
         <a href="#" class="menu-item">📁 Accounts</a>
         <a href="#" class="menu-item">📈 Market Intelligence</a>
         <a href="#" class="menu-item">🤖 AI Opportunities</a>
-        <a href="#" class="menu-item">💎 CRT Intelligence <span style="background: #0284c7; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;">NEW</span></a>
+        <a href="#" class="menu-item">💎 CRT Intelligence <span style="background: #0284c7; color: #fff; font-size: 9px; padding: 2px 5px; border-radius: 3px;">NEW</span></a>
         <a href="#" class="menu-item">📓 Trading Journal</a>
         <a href="#" class="menu-item">📉 Trade Analytics</a>
         <a href="#" class="menu-item">🛡️ Risk Manager</a>
@@ -57,73 +65,144 @@
         <!-- Header Info -->
         <div class="top-bar">
             <div>
-                <h2 style="font-size: 18px; color: #fff;">Good Morning, Trader! 👋</h2>
-                <p style="font-size: 12px; color: #94a3b8;">Focus. Plan. Execute. Review. Repeat.</p>
+                <h2 style="font-size: 16px; color: #fff;">Good Morning, Trader! 👋</h2>
+                <p style="font-size: 11px; color: #94a3b8;">Focus. Plan. Execute. Review. Repeat.</p>
             </div>
-            <div style="display: flex; gap: 20px; font-size: 13px; color: #94a3b8;">
+            <div style="display: flex; gap: 15px; font-size: 12px; color: #94a3b8;">
                 <span>Thursday, 22 May 2025 | 07:30:45 AM</span>
-                <span style="background: #1e293b; padding: 4px 10px; border-radius: 6px; color: #38bdf8;">🟢 London Session</span>
+                <span style="background: #1e293b; padding: 3px 8px; border-radius: 5px; color: #38bdf8;">🟢 London Session</span>
             </div>
         </div>
 
-        <!-- Top Metrics Cards -->
+        <!-- Top Metrics Cards (5 columns) -->
         <div class="metrics-grid">
             <div class="metric-card">
                 <span class="metric-title">TOTAL ACCOUNTS</span>
-                <span class="metric-value">4 <span style="font-size: 12px; color: #64748b; font-weight: normal;">Active Accounts</span></span>
+                <span class="metric-value">4 <span style="font-size: 11px; color: #64748b; font-weight: normal;">Active</span></span>
             </div>
             <div class="metric-card">
                 <span class="metric-title">TOTAL BALANCE</span>
                 <span class="metric-value" style="color: #38bdf8;">$439,850</span>
-                <span style="font-size: 11px; color: #64748b;">Across All Accounts</span>
+                <span style="font-size: 10px; color: #64748b;">Across All Accounts</span>
             </div>
             <div class="metric-card">
                 <span class="metric-title">TOTAL P/L (TODAY)</span>
                 <span class="metric-value" style="color: #22c55e;">+$1,236.45</span>
-                <span style="font-size: 11px; color: #22c55e;">+0.28%</span>
+                <span style="font-size: 10px; color: #22c55e;">+0.28%</span>
             </div>
             <div class="metric-card">
                 <span class="metric-title">DAILY LOSS REMAINING</span>
                 <span class="metric-value" style="color: #ef4444;">$2,764.55</span>
-                <span style="font-size: 11px; color: #64748b;">5% Daily Limit</span>
+                <span style="font-size: 10px; color: #64748b;">5% Daily Limit</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">DRAWDOWN REMAINING</span>
+                <span class="metric-value" style="color: #eab308;">$16,850.40</span>
+                <span style="font-size: 10px; color: #64748b;">Overall 10% Limit</span>
             </div>
         </div>
 
-        <!-- SINGLE GOLD (XAU/USD) LIVE CHART WIDGET (Editable Title) -->
-        <div class="card">
-            <div class="card-title">
-                <!-- Inga ungalukku thevayana per-a (Name) change pannikalam nanba -->
-                <span id="chart-title-text">🟡 XAU/USD (GOLD) INSTITUTIONAL MENTOR CHART</span>
-                <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● LIVE FEED</span>
+        <!-- Section 1: Accounts Overview & Market Overview -->
+        <div class="grid-2col">
+            <div class="card">
+                <div class="card-header">
+                    <span>Accounts Overview</span>
+                    <span style="font-size: 11px; color: #38bdf8; cursor: pointer;">View All</span>
+                </div>
+                <table>
+                    <tr><th>Account</th><th>Balance & P/L</th></tr>
+                    <tr><td><b>FundedNext #1</b> <br><span style="font-size: 10px; color: #64748b;">$200,000 Challenge</span></td><td style="text-align: right;"><b style="color: #fff;">$201,236.45</b><br><span style="color: #22c55e; font-size: 11px;">+$1,236.45 (+0.62%)</span></td></tr>
+                    <tr><td><b>FundedNext #2</b> <br><span style="font-size: 10px; color: #64748b;">$100,000 Challenge</span></td><td style="text-align: right;"><b style="color: #fff;">$98,450.20</b><br><span style="color: #ef4444; font-size: 11px;">-$320.10 (-0.32%)</span></td></tr>
+                    <tr><td><b>FTMO Account</b> <br><span style="font-size: 10px; color: #64748b;">$100,000 Challenge</span></td><td style="text-align: right;"><b style="color: #fff;">$104,560.75</b><br><span style="color: #22c55e; font-size: 11px;">+$560.75 (+0.54%)</span></td></tr>
+                </table>
             </div>
-            <div style="height: 400px; width: 100%;" class="tradingview-widget-container">
-                <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://www.tradingview-widget.com/embed-widget/advanced-chart/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A%22400%22%2C%22symbol%22%3A%22OANDA%3AXAUUSD%22%2C%22interval%22%3A%2215%22%2C%22timezone%22%3A%22Etc%2FUTC%22%2C%22theme%22%3A%22dark%22%2C%22style%22%3A%221%22%2C%22hideideas%22%3Atrue%2C%22studies%22%3A%5B%5D%2C%22show_popup_button%22%3Atrue%2C%22popup_width%22%3A%221000%22%2C%22popup_height%22%3A%22650%22%2C%22autosize%22%3Atrue%2C%22utm_source%22%3A%22localhost%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22chart%22%7D" style="width: 100%; height: 100%; border: none;"></iframe>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>Market Overview</span>
+                    <span style="font-size: 11px; color: #38bdf8;">Forex | Crypto</span>
+                </div>
+                <table>
+                    <tr><th>Symbol</th><th>Price</th><th>Change</th><th>Spread</th></tr>
+                    <tr><td>XAUUSD</td><td>2,427.35</td><td style="color: #22c55e;">+0.45%</td><td>18</td></tr>
+                    <tr><td>BTCUSD</td><td>67,842.10</td><td style="color: #22c55e;">+1.12%</td><td>45</td></tr>
+                    <tr><td>EURUSD</td><td>1.08452</td><td style="color: #ef4444;">-0.15%</td><td>0.8</td></tr>
+                    <tr><td>GBPUSD</td><td>1.26931</td><td style="color: #ef4444;">-0.12%</td><td>1.1</td></tr>
+                </table>
             </div>
         </div>
 
-        <!-- Bottom Widgets Row -->
-        <div class="bottom-grid">
-            <div class="card" style="display: block;">
-                <div class="card-title">🛡️ RISK MANAGER</div>
-                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
+        <!-- Section 2: CRT Intelligence & Trading Journal -->
+        <div class="grid-2col">
+            <div class="card">
+                <div class="card-header">
+                    <span>⚡ CRT INTELLIGENCE</span>
+                    <span style="font-size: 11px; color: #38bdf8;">Monthly Scanner</span>
+                </div>
+                <div style="display: flex; justify-content: space-around; text-align: center; margin-bottom: 15px;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #22c55e;">81%</div>
+                        <div style="font-size: 11px; color: #94a3b8;">XAU/USD</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #22c55e;">89%</div>
+                        <div style="font-size: 11px; color: #94a3b8;">BTC/USD</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: bold; color: #eab308;">32%</div>
+                        <div style="font-size: 11px; color: #94a3b8;">USD/JPY</div>
+                    </div>
+                </div>
+                <table>
+                    <tr><th>Step</th><th>Description</th><th>Status</th></tr>
+                    <tr><td>1</td><td>Monthly Bias</td><td><span style="color: #22c55e;">Bullish</span></td></tr>
+                    <tr><td>2</td><td>Daily Liquidity Sweep</td><td><span style="color: #22c55e;">Completed</span></td></tr>
+                    <tr><td>3</td><td>BOS + CHOCH</td><td><span style="color: #22c55e;">Completed</span></td></tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>📓 TRADING JOURNAL</span>
+                    <span style="font-size: 11px; color: #22c55e;">🟢 MTS Connected</span>
+                </div>
+                <div style="display: flex; gap: 15px; margin-bottom: 10px; font-size: 12px;">
+                    <div>Trades: <b>47</b></div>
+                    <div>Win Rate: <b style="color: #22c55e;">63.83%</b></div>
+                    <div>Total P/L: <b style="color: #22c55e;">+$7,842.30</b></div>
+                </div>
+                <table>
+                    <tr><th>Date</th><th>Symbol</th><th>Type</th><th>Lots</th><th>P/L</th></tr>
+                    <tr><td>22 May 07:30</td><td>XAUUSD</td><td><span style="color: #22c55e;">Buy</span></td><td>1.50</td><td style="color: #22c55e;">+$1,236.00</td></tr>
+                    <tr><td>21 May 16:45</td><td>BTCUSD</td><td><span style="color: #22c55e;">Buy</span></td><td>0.20</td><td style="color: #22c55e;">+$342.20</td></tr>
+                    <tr><td>20 May 11:20</td><td>XAUUSD</td><td><span style="color: #22c55e;">Buy</span></td><td>1.50</td><td style="color: #22c55e;">+$2,498.00</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 3: Risk Manager, Spread Monitor & Psychology Tracker -->
+        <div class="grid-3col">
+            <div class="card">
+                <div class="card-header"><span>🛡️ RISK MANAGER</span></div>
+                <div style="font-size: 12px; color: #94a3b8; display: flex; flex-direction: column; gap: 6px;">
                     <div>Account Drawdown: <b style="color: #22c55e;">8.42%</b></div>
                     <div>Daily Loss Remaining: <b style="color: #ef4444;">$2,764.55</b></div>
-                    <div>Risk Status: <span style="background: #064e3b; color: #34d399; padding: 2px 8px; border-radius: 4px; font-weight: bold;">Safe</span></div>
+                    <div>Risk Status: <span style="background: #064e3b; color: #34d399; padding: 2px 6px; border-radius: 4px; font-weight: bold;">Safe</span></div>
                 </div>
             </div>
-            <div class="card" style="display: block;">
-                <div class="card-title">🤖 AI TRADE QUALITY CHECK</div>
-                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
-                    <div>Spread Check: <span style="color: #22c55e;">✓ OK</span></div>
-                    <div>News Check: <span style="color: #38bdf8;">Clear</span></div>
-                    <div>Volatility: <span style="color: #22c55e;">Normal</span></div>
-                </div>
+            <div class="card">
+                <div class="card-header"><span>📊 SPREAD MONITOR</span></div>
+                <table>
+                    <tr><th>Symbol</th><th>Spread</th><th>Status</th></tr>
+                    <tr><td>XAUUSD</td><td>18</td><td style="color: #22c55e;">Normal</td></tr>
+                    <tr><td>BTCUSD</td><td>45</td><td style="color: #22c55e;">Normal</td></tr>
+                </table>
             </div>
-            <div class="card" style="display: block;">
-                <div class="card-title">🧠 PSYCHOLOGY TRACKER</div>
-                <div style="font-size: 13px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px;">
-                    <div>Today's Mental State: <b style="color: #38bdf8;">Focused</b></div>
-                    <div>Trading Discipline: <b style="color: #22c55e;">Good</b></div>
+            <div class="card">
+                <div class="card-header"><span>🧠 PSYCHOLOGY TRACKER</span></div>
+                <div style="font-size: 12px; color: #94a3b8; display: flex; flex-direction: column; gap: 6px;">
+                    <div>Mental State: <b style="color: #38bdf8;">Focused</b></div>
+                    <div>Discipline: <b style="color: #22c55e;">Good</b></div>
                     <div>AI Score: <b style="color: #22c55e;">8.5 / 10</b></div>
                 </div>
             </div>
