@@ -208,4 +208,39 @@
         socket.on('tradeAdded', () => { loadTrades(); });
     </script>
 </body>
-</html>
+</html><!-- Live Financial & Trump News Ticker Panel -->
+<div class="news-ticker-container" style="background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; overflow: hidden;">
+    <div style="background: #ef4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-right: 12px; white-space: nowrap;">
+        🔥 BREAKING NEWS
+    </div>
+    <div class="news-ticker-content" style="overflow: hidden; white-space: nowrap; width: 100%;">
+        <p id="live-news-text" style="display: inline-block; color: #e5e7eb; font-size: 14px; margin: 0; animation: marquee 25s linear infinite;">
+            🔴 Bloomberg: Global markets react to latest US economic data & Federal Reserve rate expectations | ⚡ Trump announces new fiscal policy updates affecting forex and commodity volatility | 🟡 Gold (XAUUSD) holds key institutional liquidity zones ahead of New York session open.
+        </p>
+    </div>
+</div>
+
+<style>
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.news-ticker-container:hover #live-news-text {
+    animation-play-state: paused;
+}
+</style><div class="card" style="background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 16px; color: white; margin-top: 20px;">
+    <h3 style="font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+        📰 Global Market & Political Wire (Bloomberg / Trump)
+    </h3>
+    <div id="news-feed-list" style="display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto;">
+        <div class="news-item" style="padding: 8px; background: #1f2937; border-radius: 6px; font-size: 13px;">
+            <span style="color: #60a5fa; font-weight: bold;">[Bloomberg]</span> US Dollar Index tests major liquidity pool; traders eye upcoming FOMC minutes. <span style="color: #9ca3af; font-size: 11px; float: right;">5m ago</span>
+        </div>
+        <div class="news-item" style="padding: 8px; background: #1f2937; border-radius: 6px; font-size: 13px;">
+            <span style="color: #f87171; font-weight: bold;">[Macro / Trump]</span> Trade policy remarks trigger sharp moves across commodity sectors and safe havens. <span style="color: #9ca3af; font-size: 11px; float: right;">14m ago</span>
+        </div>
+        <div class="news-item" style="padding: 8px; background: #1f2937; border-radius: 6px; font-size: 13px;">
+            <span style="color: #34d399; font-weight: bold;">[Forex Alert]</span> GBP/USD breaks key structural resistance on London session volume surge. <span style="color: #9ca3af; font-size: 11px; float: right;">25m ago</span>
+        </div>
+    </div>
+</div>
