@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMC Intelligence Terminal - Live Pro</title>
+    <title>SMC Intelligence Terminal - Pro</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: #0b0f19; color: #f3f4f6; display: flex; height: 100vh; overflow: hidden; }
@@ -26,6 +26,11 @@
         
         .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 15px; display: flex; flex-direction: column; }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; font-weight: bold; color: #f8fafc; }
+
+        /* Custom Watchlist Tabs */
+        .asset-tabs { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+        .asset-btn { background: #1e293b; border: 1px solid #334155; color: #94a3b8; padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .asset-btn.active, .asset-btn:hover { background: #0284c7; color: #fff; border-color: #38bdf8; }
 
         /* Tables */
         table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -56,50 +61,34 @@
         <div class="top-bar">
             <div>
                 <h2 style="font-size: 16px; color: #fff;">Good Morning, Trader! 👋</h2>
-                <p style="font-size: 11px; color: #94a3b8;">Live Terminal & Watchlist Panel</p>
+                <p style="font-size: 11px; color: #94a3b8;">Custom Terminal & Native Watchlist</p>
             </div>
             <div style="display: flex; gap: 15px; font-size: 12px; color: #94a3b8;">
                 <span style="background: #1e293b; padding: 3px 8px; border-radius: 5px; color: #38bdf8;">🟢 Live Session Active</span>
             </div>
         </div>
 
-        <!-- Section 1: Chart with Watchlist Panel Enabled inside Dashboard -->
+        <!-- Section 1: Custom Chart with Native Watchlist Tabs (No external branding) -->
         <div class="grid-2col">
             
-            <!-- ADVANCED CHART WITH WATCHLIST ENABLED -->
             <div class="card">
                 <div class="card-header">
-                    <span>📈 LIVE CHART (Use Watchlist icon inside chart to switch assets)</span>
-                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● EMBEDDED FEED</span>
+                    <span id="current-chart-title">📈 LIVE CHART: GOLD (XAUUSD)</span>
+                    <span style="font-size: 11px; color: #22c55e; background: #1e293b; padding: 2px 6px; border-radius: 4px;">● INTERNAL FEED</span>
                 </div>
-                <!-- TradingView Widget with Watchlist and Details panel turned ON -->
-                <div class="tradingview-widget-container" style="height: 420px; width: 100%;">
-                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                    {
-                      "width": "100%",
-                      "height": "420",
-                      "symbol": "OANDA:XAUUSD",
-                      "interval": "15",
-                      "timezone": "Etc/UTC",
-                      "theme": "dark",
-                      "style": "1",
-                      "locale": "en",
-                      "enable_publishing": false,
-                      "withdateranges": true,
-                      "hide_side_toolbar": false,
-                      "details": true,
-                      "watchlist": [
-                        "OANDA:XAUUSD",
-                        "BINANCE:BTCUSDT",
-                        "FX:EURUSD",
-                        "FX:USDJPY",
-                        "FX:GBPUSD"
-                      ],
-                      "studies": [],
-                      "support_host": "https://www.tradingview.com"
-                    }
-                    </script>
+                
+                <!-- Native Watchlist Selection Buttons -->
+                <div class="asset-tabs">
+                    <button class="asset-btn active" onclick="switchAsset('GOLD', 'OANDA:XAUUSD', this)">🟡 Gold (XAUUSD)</button>
+                    <button class="asset-btn" onclick="switchAsset('BTC', 'BINANCE:BTCUSDT', this)">₿ Bitcoin (BTCUSD)</button>
+                    <button class="asset-btn" onclick="switchAsset('EUR', 'FX:EURUSD', this)">💶 EUR/USD</button>
+                    <button class="asset-btn" onclick="switchAsset('JPY', 'FX:USDJPY', this)">💴 USD/JPY</button>
+                    <button class="asset-btn" onclick="switchAsset('GBP', 'FX:GBPUSD', this)">💷 GBP/USD</button>
+                </div>
+
+                <!-- Clean Container Frame -->
+                <div id="chart-container" style="height: 380px; width: 100%; position: relative;">
+                    <iframe id="asset-frame" scrolling="no" allowtransparency="true" frameborder="0" src="https://s.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=15&hidetoolbars=1&symboledit=1&saveimage=0&toolbarbg=0b0f19&studies=[]&theme=dark" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
             </div>
 
@@ -163,6 +152,22 @@
         </div>
 
     </div>
+
+    <!-- Script to handle custom switching without leaving page -->
+    <script>
+        function switchAsset(name, symbol, btnElement) {
+            // Update active tab styling
+            document.querySelectorAll('.asset-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Update title
+            document.getElementById('current-chart-title').innerText = '📈 LIVE CHART: ' + name;
+
+            // Update iframe source seamlessly
+            const frame = document.getElementById('asset-frame');
+            frame.src = `https://s.tradingview.com/widgetembed/?symbol=${encodeURIComponent(symbol)}&interval=15&hidetoolbars=1&symboledit=1&saveimage=0&toolbarbg=0b0f19&studies=[]&theme=dark`;
+        }
+    </script>
 
 </body>
 </html>
